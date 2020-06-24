@@ -1,0 +1,10 @@
+[requires]
+protobuf/0.1@xbuild/scenario
+
+[generators]
+cmake
+cmake_find_package
+
+[imports]
+bin, *.dll -> ./bin
+lib, *.dylib* -> ./bin

@@ -7,8 +7,8 @@ conan remove protobuf/0.1@xbuild/scenario -f
 
 # Populate the cache
 pushd $DIR/../_recipes
-conan export zlib/conanfile.py zlib/0.1@xbuild/scenario
-conan export protobuf/conanfile.py protobuf/0.1@xbuild/scenario
+    conan export zlib/conanfile.py zlib/0.1@xbuild/scenario
+    conan export protobuf/conanfile.py protobuf/0.1@xbuild/scenario
 popd
 
 
@@ -19,10 +19,12 @@ conan install protobuf/0.1@xbuild/scenario --build --profile $DIR/../_profiles/b
 
 # Test
 mkdir -p $DIR/_testing
-pushd $DIR/_testing
-conan install protobuf/0.1@xbuild/scenario -g virtualrunenv --profile $DIR/../_profiles/build
-source activate_run.sh
-protoc
-source deactivate_run.sh
+    pushd $DIR/_testing
+    conan install protobuf/0.1@xbuild/scenario -g virtualrunenv --profile $DIR/../_profiles/build
+    source activate_run.sh
+    protoc
+    source deactivate_run.sh
 popd
 
+# Run examples
+sh $DIR/example1/run.sh
