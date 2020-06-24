@@ -1,6 +1,7 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+# Build using Conan
 rm -fr $DIR/_build
 mkdir -p $DIR/_build
 pushd $DIR/_build
