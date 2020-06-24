@@ -6,8 +6,11 @@ conan remove zlib/0.1@xbuild/scenario -f
 conan remove protobuf/0.1@xbuild/scenario -f
 
 # Populate the cache
-conan export $DIR/../_recipes/zlib/conanfile.py zlib/0.1@xbuild/scenario
-conan export $DIR/protobuf/conanfile.py protobuf/0.1@xbuild/scenario
+pushd $DIR/../_recipes
+conan export zlib/conanfile.py zlib/0.1@xbuild/scenario
+conan export protobuf/conanfile.py protobuf/0.1@xbuild/scenario
+popd
+
 
 # Build
 conan install zlib/0.1@xbuild/scenario --build --profile $DIR/../_profiles/build
