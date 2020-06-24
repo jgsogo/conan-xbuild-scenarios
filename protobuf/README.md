@@ -8,3 +8,8 @@ Challenges:
  1. Macos and SIP: populate DYLD_LIBRARY_PATH before running commands
 
 https://github.com/conan-io/conan/issues/7240
+https://github.com/conan-io/conan/issues/6069
+
+
+BUGS:
+* `conan build ` doesn't modify value of `_conan_using_build_profile`

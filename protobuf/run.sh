@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Clean the cache
@@ -14,8 +15,10 @@ popd
 
 
 # Build
-conan install zlib/0.1@xbuild/scenario --build --profile $DIR/../_profiles/build
-conan install protobuf/0.1@xbuild/scenario --build --profile $DIR/../_profiles/build
+conan install zlib/0.1@xbuild/scenario --build=zlib --profile $DIR/../_profiles/build
+conan install zlib/0.1@xbuild/scenario --build=zlib --profile $DIR/../_profiles/host
+conan install protobuf/0.1@xbuild/scenario --build=protobuf --profile $DIR/../_profiles/build
+conan install protobuf/0.1@xbuild/scenario --build=protobuf --profile $DIR/../_profiles/host
 
 
 # Test
