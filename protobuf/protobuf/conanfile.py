@@ -28,6 +28,7 @@ class Protobuf(ConanFile):
         self.copy("*.so", dst="lib", keep_path=False)
         self.copy("*.dylib", dst="lib", keep_path=False)
         self.copy("*.a", dst="lib", keep_path=False)
+        self.copy("*protoc*", src="bin", dst="bin", keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["zlib"]
+        self.cpp_info.libs = ["protobuf"]
