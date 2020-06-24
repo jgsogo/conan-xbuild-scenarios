@@ -1,9 +1,10 @@
 #!/bin/bash
+set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Clean the cache
-conan remove zlib/0.1@xbuild/scenario -f
-conan remove protobuf/0.1@xbuild/scenario -f
+conan remove zlib/0.1@xbuild/scenario -f || true
+conan remove protobuf/0.1@xbuild/scenario -f || true
 
 # Populate the cache
 pushd $DIR/../_recipes
@@ -22,7 +23,7 @@ mkdir -p $DIR/_testing
     pushd $DIR/_testing
     conan install protobuf/0.1@xbuild/scenario -g virtualrunenv --profile $DIR/../_profiles/build
     source activate_run.sh
-    protoc
+    protoc_exe
     source deactivate_run.sh
 popd
 

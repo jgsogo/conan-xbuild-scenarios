@@ -25,4 +25,4 @@ set_target_properties(protobuf PROPERTIES OUTPUT_NAME protobuf)
 # We have a executable
 add_executable(protoc protobuf/main.cpp)
 target_link_libraries(protoc PUBLIC protobuf )
-set_target_properties(protoc PROPERTIES OUTPUT_NAME protoc)
+set_target_properties(protoc PROPERTIES OUTPUT_NAME protoc_exe)

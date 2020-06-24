@@ -6,3 +6,5 @@ Challenges:
  1. Both versions should match!
  1. There are CMake functions/macros provided by the library that used the executable.
  1. Macos and SIP: populate DYLD_LIBRARY_PATH before running commands
+
+https://github.com/conan-io/conan/issues/7240

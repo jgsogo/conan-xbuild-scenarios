@@ -28,7 +28,10 @@ class Protobuf(ConanFile):
         self.copy("*.so", dst="lib", keep_path=False)
         self.copy("*.dylib", dst="lib", keep_path=False)
         self.copy("*.a", dst="lib", keep_path=False)
-        self.copy("*protoc*", src="bin", dst="bin", keep_path=False)
+        self.copy("*protoc_exe*", src="bin", dst="bin", keep_path=False)
+
+        self.copy("*.cmake", src="cmake", dst="lib/cmake", keep_path=False)
 
     def package_info(self):
         self.cpp_info.libs = ["protobuf"]
+        self.cpp_info.build_modules = [os.path.join("lib", "cmake", "macro.cmake"),]
