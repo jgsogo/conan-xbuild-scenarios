@@ -34,4 +34,5 @@ class Protobuf(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["protobuf"]
+        self.cpp_info.exes = ["protoc_exe"]
         self.cpp_info.build_modules = [os.path.join("lib", "cmake", "macro.cmake"),]

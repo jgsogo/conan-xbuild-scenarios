@@ -8,7 +8,7 @@ mkdir -p $DIR/_build
 pushd $DIR/_build
     conan install ../conanfile.py example01/version@xbuild/scenario --profile:build=$DIR/../../_profiles/build --profile:host=$DIR/../../_profiles/host
     conan build ../conanfile.py
-    #cmake .. -DCMAKE_MODULE_PATH=$DIR/_build
+    cmake .. -DCMAKE_MODULE_PATH=$DIR/_build
     #cmake --build .
 popd
 
