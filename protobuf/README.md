@@ -4,6 +4,7 @@ protobuf
 Challenges:
  1. Protobuf package provides a library and an executable.
  1. Both versions should match!
+ 
     I think it is up to the consumer to run this check, it is the consumer the one that is
     requiring and build-requiring the package `protobuf` (maybe they want to mix versions).
     It is not a big deal to add these lines to the consumer recipe:
