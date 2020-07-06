@@ -1,5 +1,7 @@
 
 
+# TODO: Check protobuf version compatibility
+
 
 function(protobuf_generate_cpp OUTPUT_FILE)
     message(">>>>>>>>>>>>>> protobuf_generate_cpp <<<<<<<<<<<<<<<<<")
@@ -9,7 +11,7 @@ function(protobuf_generate_cpp OUTPUT_FILE)
     message(" - environment: $ENV{DYLD_LIBRARY_PATH}")
     message(" - CMAKE_COMMAND: ${CMAKE_COMMAND}")
     message(" - CONAN_BUILD_DYLD: ${CONAN_BUILD_DYLD}")
-    
+
     add_custom_command(
         OUTPUT ${OUTPUT_FILE}
         COMMAND env > ${OUTPUT_FILE}.env 2>&1
