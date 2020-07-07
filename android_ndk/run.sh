@@ -21,3 +21,4 @@ conan install android_ndk/0.1@xbuild/scenario --build=android_ndk --profile $DIR
 
 # Run examples
 # sh $DIR/example1/run.sh
+conan install zlib/0.1@xbuild/scenario --build=zlib --profile:host=$DIR/../_profiles/android --profile:build=$DIR/../_profiles/build

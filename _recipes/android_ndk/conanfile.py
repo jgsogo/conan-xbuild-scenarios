@@ -1,5 +1,7 @@
 import os
 from conans import ConanFile, CMake
+from conans.errors import ConanInvalidConfiguration
+
 
 class AndroidNDK(ConanFile):
     name = "android_ndk"
@@ -12,6 +14,13 @@ class AndroidNDK(ConanFile):
     generators = "cmake", "cmake_find_package"
     requires = "zlib/0.1@xbuild/scenario"
     
+    def configure(self):
+        if hasattr(self, 'settings_target'):
+            # We are using this recipe as a build-requires to cross-compile something to Android :D
+            target_api_level = int(str(self.settings_target.os.api_level))
+            if not 27 <= target_api_level < 30:
+                raise ConanInvalidConfiguration("Valid Android API level range is [27, 29]: target.os.api_level is {}".format(target_api_level))
+
     def build(self):
         cmake = CMake(self)
         settings = "|".join(map(str, [self.settings.os, self.settings.arch, self.settings.compiler, self.settings.build_type]))
@@ -34,3 +43,9 @@ class AndroidNDK(ConanFile):
     def package_info(self):
         self.cpp_info.exes = ["android_ndk"]
         self.env_info.PATH.append(os.path.join(self.package_folder, 'bin'))
+
+        if hasattr(self, 'settings_target'):
+            target_api_level = int(str(self.settings_target.os.api_level))
+            toolchain_file = os.path.join(self.package_folder, 'lib', 'toolchains', 'api_level_{}.cmake'.format(target_api_level))
+            self.env_info.CONAN_CMAKE_TOOLCHAIN_FILE = toolchain_file
+            self.output.info("Inject environment variable CONAN_CMAKE_TOOLCHAIN_FILE='{}'".format(toolchain_file))
