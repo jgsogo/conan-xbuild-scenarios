@@ -1,0 +1,6 @@
+[settings]
+os = "Android"
+os.api_level = 27
+
+[build_requires]
+android_ndk/0.1@xbuild/scenario
